@@ -14,7 +14,7 @@ import com.kristel.homealarm.ServerCallback
 class HttpRequestHendler {
     private var requestQueue: RequestQueue? = null
     private var context: Context? = null
-    private val url = "https://espwebapi.azurewebsites.net/posttest"
+    private val url = "https://espwebapi.azurewebsites.net/"
 
     constructor(context: Context){
         this.context = context
@@ -22,7 +22,7 @@ class HttpRequestHendler {
     }
 
     fun sendrequest(massage: String,callback: ServerCallback){
-        val request = object : JsonObjectRequest(Method.POST, url, null, Response.Listener {
+        val request = object : JsonObjectRequest(Method.POST, url+massage, null, Response.Listener {
                 response ->try {
             callback.onSuccess(response.getJSONArray("extra"))
 
